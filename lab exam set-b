@@ -1,0 +1,155 @@
+SET-B:
+
+1)
+imagine you are developing a calculator application in c++ for both students performing some basic calculations and engineers 
+dealing with complex mathematical tasks. your calculator must support data types- integers and floating point numbers.
+now as a programmer write a c++ program with the following criterion-
+build up a class named "calculator".
+add the member variables - varint1, varint2,varfloat1,varfloat2.
+add the member functions with the following features-
+1) methods to perform four fundamental operations: addition,subtraction,multiplication and division for integer variables.
+2)methods to perform four fundamental operations: addition,subtraction,multiplication and division for floating point variables
+3) methods to perform square root on any one of the integer variables and floating poin variables
+
+also add main function with necessary objects( at least 2) and display all the values in ain function
+
+solving:
+#include <bits/stdc++.h>
+using namespace std;
+
+
+class Calculator {
+private:
+    int varint1, varint2;
+    float varfloat1, varfloat2;
+
+public:
+    Calculator(int int1, int int2, float float1, float float2)
+        : varint1(int1), varint2(int2), varfloat1(float1), varfloat2(float2) {}
+
+    // Integer operations
+    int addIntegers() {
+        return varint1 + varint2;
+    }
+
+    int subtractIntegers() {
+        return varint1 - varint2;
+    }
+
+    int multiplyIntegers() {
+        return varint1 * varint2;
+    }
+
+    int divideIntegers() {
+        if (varint2 != 0) {
+            return varint1 / varint2;
+        } else {
+           cerr << "Error: Division by zero." <<endl;
+            return 0; // Return a default value or handle the error appropriately
+        }
+    }
+
+    // Floating-point operations
+    float addFloats() {
+        return varfloat1 + varfloat2;
+    }
+
+    float subtractFloats() {
+        return varfloat1 - varfloat2;
+    }
+
+    float multiplyFloats() {
+        return varfloat1 * varfloat2;
+    }
+
+    float divideFloats() {
+        if (varfloat2 != 0.0) {
+            return varfloat1 / varfloat2;
+        } else {
+           cerr << "Error: Division by zero." <<endl;
+            return 0.0; // Return a default value or handle the error appropriately
+        }
+    }
+
+    // Square root operations
+    double squareRootInteger() {
+        return sqrt(static_cast<double>(varint1));
+    }
+
+    double squareRootFloat() {
+        return sqrt(static_cast<double>(varfloat1));
+    }
+};
+
+int main() {
+    Calculator calc1(10, 5, 12.5, 2.5);
+    Calculator calc2(25, 3, 9.75, 1.25);
+
+    // Integer operations
+   cout << "Integer Addition: " << calc1.addIntegers() <<endl;
+   cout << "Integer Subtraction: " << calc1.subtractIntegers() <<endl;
+   cout << "Integer Multiplication: " << calc1.multiplyIntegers() <<endl;
+   cout << "Integer Division: " << calc1.divideIntegers() <<endl;
+
+    // Floating-point operations
+   cout << "Float Addition: " << calc1.addFloats() <<endl;
+   cout << "Float Subtraction: " << calc1.subtractFloats() <<endl;
+   cout << "Float Multiplication: " << calc1.multiplyFloats() <<endl;
+   cout << "Float Division: " << calc1.divideFloats() <<endl;
+
+    // Square root operations
+   cout << "Square Root of Integer: " << calc1.squareRootInteger() <<endl;
+   cout << "Square Root of Float: " << calc1.squareRootFloat() <<endl;
+
+    return 0;
+}
+
+2)implement a c++ program including a class called rectangle with member values length and width.
+include main function and complete the code in your own way using the concept of friend function.
+
+solving:
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Rectangle {
+private:
+    double length;
+    double width;
+
+public:
+    Rectangle(double l, double w) : length(l), width(w) {}
+
+    // Getter functions
+    double getLength() const {
+        return length;
+    }
+
+    double getWidth() const {
+        return width;
+    }
+
+    // Declare the friend function
+    friend double calculateArea(const Rectangle& rect);
+};
+
+// Friend function to calculate the area of the rectangle
+double calculateArea(const Rectangle& rect) {
+    return rect.length * rect.width;
+}
+
+int main() {
+    // Create a rectangle object
+    Rectangle rect(5.0, 3.0);
+
+    // Display rectangle details
+   cout << "Rectangle Length: " << rect.getLength() <<endl;
+   cout << "Rectangle Width: " << rect.getWidth() <<endl;
+
+    // Calculate and display the area using the friend function
+   cout << "Rectangle Area: " << calculateArea(rect) <<endl;
+
+    return 0;
+}
+
+
