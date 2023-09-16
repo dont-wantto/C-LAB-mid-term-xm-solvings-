@@ -1,0 +1,166 @@
+LAB- A
+1)
+suppose you are an experienced software developer working on a term responsible for 
+developing an online marketpalce platform for beauty products. this platform serves as a hub for
+buyers to view and purchase beauty products. as the developer responsible for managing cosmetic products,
+you are tasked with the following criterion-
+build up a class for products management named products.
+ass the member variables - productid, productname,price,quantity.
+add the mmber functions with the following features.
+1)method where variables will automatically initialized.
+2)method where variables will automatically initialized through specific values from main function
+3) method to display all information of products
+4)method to add the product to a user's shopping cart when they decide to purchase it.
+5)method to destroy products information automatically.
+
+also add main function and add necessary objects at least 2.
+add comments where the above tasked are dine in the program.
+
+solving:
+#include<bits/stdc++.h>
+using namespace std;
+
+class Product {
+private:
+    int productID;
+   string productName;
+    double price;
+    int quantity;
+
+public:
+    // Constructor to initialize variables with default values
+    Product() : productID(0), productName(""), price(0.0), quantity(0) {}
+
+    // Constructor to initialize variables with specific values
+    Product(int id, const string& name, double p, int qty)
+        : productID(id), productName(name), price(p), quantity(qty) {}
+
+    // Method to display product information
+    void displayProductInfo() const {
+       cout << "Product ID: " << productID <<endl;
+       cout << "Product Name: " << productName <<endl;
+       cout << "Price: $" << price <<endl;
+       cout << "Quantity: " << quantity <<endl;
+    }
+
+    static const int MAX_CART_SIZE = 10;
+void addToCart(int& cartSize) {
+    if (cartSize < MAX_CART_SIZE) {
+        cartSize++;
+        std::cout << "Added " << productName << " to the shopping cart." << std::endl;
+    } else {
+        std::cout << "Shopping cart is full. Cannot add more items." << std::endl;
+    }
+}
+
+
+
+    // Method to reset product information
+    void resetProductInfo() {
+        productID = 0;
+        productName = "";
+        price = 0.0;
+        quantity = 0;
+    }
+};
+
+int main() {
+    // Create two product objects
+    Product product1; // Initialized with default values
+    Product product2(101, "Lipstick", 12.99, 50); // Initialized with specific values
+
+    // Display product information
+    std::cout << "Product 1 Information:" << std::endl;
+    product1.displayProductInfo();
+    std::cout << "\nProduct 2 Information:" << std::endl;
+    product2.displayProductInfo();
+
+    // Maintain cart size
+    int cartSize = 0;
+
+    // Add product2 to the shopping cart
+    product2.addToCart(cartSize);
+
+    // Reset product2 information
+    product2.resetProductInfo();
+
+    // Display product2 information after resetting
+    std::cout << "\nProduct 2 Information after Reset:" << std::endl;
+    product2.displayProductInfo();
+
+    return 0;
+}
+
+2)
+implement a c++ program including a class called rectangle with member values length and width. 
+including main function and complete the code in your own way using the concept of passing object through
+functions and returning objects through functions.
+
+solving:
+#include <bits/stdc++.h>
+using namespace std;
+
+class Rectangle {
+private:
+    double length;
+    double width;
+
+public:
+    Rectangle(double l, double w) : length(l), width(w) {}
+
+    // Getter functions
+    double getLength() const {
+        return length;
+    }
+
+    double getWidth() const {
+        return width;
+    }
+
+    // Function to calculate area
+    double calculateArea() const {
+        return length * width;
+    }
+
+    // Function to calculate perimeter
+    double calculatePerimeter() const {
+        return 2 * (length + width);
+    }
+
+    // Function to double the dimensions of the rectangle and return a new rectangle
+    Rectangle newrect() const {
+        return Rectangle(2 * length, 2 * width);   
+    }
+};
+
+// Function to display rectangle details
+void display(const Rectangle& rect) {
+   cout << "Length: " << rect.getLength() << " Width: " << rect.getWidth() <<endl;
+   cout << "Area: " << rect.calculateArea() <<endl;
+   cout << "Perimeter: " << rect.calculatePerimeter() <<endl;
+}
+
+int main() {
+    // Create a rectangle object
+    Rectangle rect1(5, 3);
+
+    // Display initial rectangle details
+   cout << "Given Rectangle:" <<endl;
+    display(rect1);
+
+    // Double the dimensions of the rectangle and create a new rectangle
+    Rectangle new1 = rect1.newrect();
+   cout << "\nnew Rectangle:" <<endl;
+    display(new1);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
